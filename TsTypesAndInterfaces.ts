@@ -1,14 +1,14 @@
-// let name:string= "Ayush";
+let name:string= "Ayush";
 
-// let names: string[] = ["ayush", "sharma", "xyz"] // array of strings
+let names: string[] = ["ayush", "sharma", "xyz"] // array of strings
 
-// let digits: number[] = [1, 2, 3, 4, 5] // array of nnumbers 
+let digits: number[] = [1, 2, 3, 4, 5] // array of nnumbers 
 
-// let isDone: boolean = false
+let isDone: boolean = false
 
-// let a:any = "Any data type" // when we are not sure about the type we use any type
+let a:any = "Any data type" // when we are not sure about the type we use any type
 
-// let Arr1:any[] = ["xyz",1,2,false] // data type are not restricted when the type is any 
+let Arr1:any[] = ["xyz",1,2,false] // data type are not restricted when the type is any 
 
 
 // functions in ts

@@ -1,4 +1,4 @@
-class AddTypes<T> {  // T here is generic
+class AddTypes<T> {  // T here is generic  
 
     private Arr: T[]
 
@@ -22,3 +22,7 @@ const obj1 = new AddTypes<number>(); // sending general type while creating the 
 obj1.addItems(2, 3);
 
 console.log(obj1.getItem(1));
+
+
+
+// https://github.com/AyushSharma72G/Ts_Basics
