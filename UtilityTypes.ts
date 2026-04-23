@@ -98,7 +98,7 @@ type ReadyStatus = Exclude<ApiStatus, "loading" | "idle">;  // use when Renderin
 // NonNullable
 
 type Value = string | null | undefined;  // Removes null and undefined from a type.
- 
+
 type SafeValue = NonNullable<Value>;
 // string
 

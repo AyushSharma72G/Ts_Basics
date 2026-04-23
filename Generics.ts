@@ -1,28 +1,26 @@
-class AddTypes<T> {  // T here is generic  
+class AddTypes<T> {
+  // T here is generic
 
-    private Arr: T[]
+  private arr: T[];
 
-    constructor() {
-        this.Arr = []
-    }
+  constructor() {
+    this.arr = [];
+  }
 
-    addItems(item1: T, item2: T): void {
-        this.Arr.push(item1);
-        this.Arr.push(item2);
-    }
+  addItems(item1: T, item2: T): void {
+    this.arr.push(item1);
+    this.arr.push(item2);
+  }
 
-    getItem(index: number): T | undefined {
-        return this.Arr[index];
-    }
-
+  getItem(index: number): T | undefined {
+    return this.arr[index];
+  }
 }
 
-const obj1 = new AddTypes<number>(); // sending general type while creating the object 
+const obj1 = new AddTypes<number>(); // sending general type while creating the object
 
 obj1.addItems(2, 3);
 
 console.log(obj1.getItem(1));
-
-
 
 // https://github.com/AyushSharma72G/Ts_Basics
