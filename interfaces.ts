@@ -89,7 +89,7 @@ type Staff = Person1 & Person2;
 
 // output;
 // type Staff = {
-//   name: string & number;  // this is never type and it wil cause error when we use it to decalre the name
+//   name: string & number;  // this is never type and it will cause error when we use it to decalre the name
 // };
 
 
