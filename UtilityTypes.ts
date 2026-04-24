@@ -1,104 +1,112 @@
-interface MyData {
-    name: string,
-    age: number,
-    address: string,
-    hobbies?: number
-}
+// --------------partial type----------------
 
+// when used partially all the fields of the interface becomes optional
 
-// let yourData: MyData = { // keeping all the fields here is necessary as they exist in the interface
-//     name: "Ayush",
-//     age: 22,
-//     address: "XYZ",
-//     hobbies: 2
+// interface Todo {
+//   title: string;
+//   description: string;
 // }
 
-
-let yourData: Partial<MyData> = { // if we use Partial then all the fields become non necessary 
-    // name: "Ayush",
-    age: 22,
-    // address: "XYZ",
-    // hobbies:10
-}
-
-// same for a funcction arguments 
-
-function printData(data: Partial<MyData>) {
-    console.log(data)
-}
-
-// printData({ name: "Ayush", age: 22, address: "Ayush", hobbies: 1 }) // send all the fields when we are not using partial 
-
-printData({ name: "Ayush" }) // sending only name still no error 
-
-
-
-
-// Required 
-
-
-// let yourData2: Required<MyData> = { // if we use required then all the fields become required even the optional field like hobby 
-//     name: "Ayush",
-//     age: 22,
-//     address: "XYZ",
-//     // hobbies: 10    // error hobbies field required
+// function update(todo: Todo, fieldsToUpdate: Partial<Todo>) {
+//   // we need to only update the todo partially
+//   return { ...todo, ...fieldsToUpdate };
 // }
 
+// const todo = {
+//   title: "This is todo 1",
+//   description: "this is the desc of todo 1",
+// };
 
+// const todo2 = update(todo, {
+//   description: "this is the desc of todo 2",
+// });
 
-// ReadOnly
+// console.log(todo2);
 
+//-------------------- Required (opposite of partial all the fields are required)-------------------
 
-let yourData3: Readonly<MyData> = { //  we cannot chnage the data  
-    name: "Ayush",
-    age: 22,
-    address: "XYZ",
-    hobbies: 10    // error hobbies field required
+// interface Todo {
+//   title?: string;
+//   description: string;
+// }
+
+// function update(todo: Todo, fieldsToUpdate: Required<Todo>) {
+//   // we need to only update the todo partially
+//   return { ...todo, ...fieldsToUpdate };
+// }
+
+// const todo = {
+//   title: "This is todo 1",
+//   description: "this is the desc of todo 1",
+// };
+
+// const todo2 = update(todo, {
+//   description: "this is the desc of todo 2",  // error as the Todo is marked Required
+// });
+
+// console.log(todo2);
+
+// -------------Readonly<Type>------------
+
+interface Todo {
+  title: string;
 }
 
+const todo: Readonly<Todo> = {
+  // decalration of the todo
+  title: "Delete inactive users",
+};
 
-// yourData3.hobbies= 20; // error as the youData3 is Readonly
+// todo.title = "Hello"; // error as we cannot modify the title it is read only
 
+// ---------------  Record<Keys, Type> --------------
 
+// Record is used to create a object where all the given keys exist and each key have a specific type
 
-// Pick 
-let yourData4: Pick<MyData, "name" | "age"> = { //  if we only want some of the properties then 
-    // we can pick the properties seperately 
-    name: "Ayush",
-    age: 22,
-}
+type Status = "TODO" | "IN_PROGRESS" | "DONE";
 
+// type StatusColors = Record<Status, string>;
 
-// Omit
-let yourData5: Omit<MyData, "name" | "age"> = { //  if we only do not want some of the properties then we can omit them 
-    address: "XYZ",
-    hobbies: 10
-}
+// this becomes
 
+// type StatusColors = {
+//   TODO: string;
+//   IN_PROGRESS: string;
+//   DONE: string;
+// };
 
+// ---------------Pick<Type, Keys>---------------
 
+// Constructs a type by picking the set of properties Keys
 
-// Exclude 
+// interface Todo {
+//   title: string;
+//   description: string;
+//   completed: boolean;
+// }
 
-type Status = "success" | "error" | "loading";
+// type TodoPreview = Pick<Todo, "title" | "completed">;
 
-type FinalStatus = Exclude<Status, "loading">;  // remove loading from the union 
-// "success" | "error"
+// const todo: TodoPreview = {
+//   title: "Clean room",
+//   completed: false,
+// };
 
-// real world use case  
-// API status handling
+//-------------Omit<Type, Keys>-------------
 
-type ApiStatus = "idle" | "loading" | "success" | "error";
+// Constructs a type by picking all properties from Type and then removing Keys
 
-type ReadyStatus = Exclude<ApiStatus, "loading" | "idle">;  // use when Rendering UI Enforcing valid states
+// interface Todo {
+//   title: string;
+//   description: string;
+//   completed: boolean;
+//   createdAt: number;
+// }
 
-// "success" | "error"
+// type TodoPreview = Omit<Todo, "description">;
 
-
-// NonNullable
-
-type Value = string | null | undefined;  // Removes null and undefined from a type.
-
-type SafeValue = NonNullable<Value>;
-// string
-
+// const todo: TodoPreview = {
+//   title: "Clean room",
+//   completed: false,
+//   createdAt: 1615544252770,
+// };

@@ -78,3 +78,6 @@ console.log("enum value from the member", A.P);
 const val = A.P;
 // reverse mapping
 console.log("enum value from the member", A[val]);
+
+// Infer
+// const enum
