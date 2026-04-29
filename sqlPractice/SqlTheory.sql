@@ -20,7 +20,7 @@ improving query performance.
 
 CREATE INDEX idx_city ON users (city); -- this commmand creates a non unique index
 
-city	row references
+city	row references  
 Delhi	[1, 3, 5]
 Mumbai	[2]
 Pune	[4]
